@@ -1,18 +1,60 @@
 package coroutine
 
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 fun main(args: Array<String>) {
-    println("Program started.")
-    var job = GlobalScope.launch {
-        delay(200)
-        println("Welcome to coroutine.")
+    GlobalScope.launch {
+        delay(1000L)
+        println("World.")
     }
+    print("Hello, ")
     runBlocking {
-       job.join()
+        delay(2000L)
     }
-    println("Program ended.")
+
+//    structuredCoroutine()
+    scopeBuilder()
+}
+
+//Or
+fun main() = runBlocking<Unit> {
+    val job = GlobalScope.launch {
+        delay(1000L)
+        println("World.")
+    }
+    print("Hello, ")
+    job.join()
+}
+
+fun structuredCoroutine() = runBlocking {
+    launch {
+        delay(1000L)
+        println("Coroutine.")
+    }
+    print("Structured, ")
+}
+
+fun scopeBuilder() = runBlocking {
+    launch {
+        delay(200L)
+        println("Task from runBlocking")
+    }
+
+    coroutineScope { // Creates a coroutine scope
+        launch {
+            delay(500L)
+            println("Task from nested launch")
+        }
+
+        delay(100L)
+        println("Task from coroutine scope") // This line will be printed before the nested launch
+    }
+
+    println("Coroutine scope is over") // This line is not printed until the nested launch completes
+}
+
+suspend fun suspendingFun() {
+    delay(1000L)
+    println("This is a suspending function. " +
+            "Also, it can be used with any other suspending functions and can be called from coroutine scope. ")
 }
