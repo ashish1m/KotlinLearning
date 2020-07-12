@@ -6,7 +6,7 @@ import kotlin.concurrent.thread
 import kotlin.system.measureTimeMillis
 
 fun main(args: Array<String>) {
-    threadTest()
+//    threadTest()
     coroutineTest()
 }
 
