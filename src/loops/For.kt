@@ -40,4 +40,23 @@ fun main(args: Array<String>) {
     for (i in 0 until 10){
         print("$i ")
     }
+
+    for (ch in "abc") {
+        print(ch + 1)
+    }
+    println()
+    println(isValidIdentifier("1Ashish_123"))
+}
+
+fun isValidIdentifier(s: String): Boolean {
+    if (!s[0].isLetter() && s[0] != '_') {
+        return false
+    }
+
+    for (ch in s) {
+        if (!ch.isLetter() && !ch.isDigit() && ch != '_'){
+            return false
+        }
+    }
+    return true
 }

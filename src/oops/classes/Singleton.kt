@@ -1,13 +1,19 @@
 package oops.classes
 
 fun main(args: Array<String>) {
-    var name = Singleton.name
+    val name = Singleton.name
+    println(Singleton.isNameNull)
     println(name)
     Singleton.someMethod()
 }
 
 object Singleton {
-    var name: String = ""
+    var name: String?
+
+    val isNameNull: Boolean
+        get() {
+            return name != null
+        }
 
     init {
         name = "Ashish"

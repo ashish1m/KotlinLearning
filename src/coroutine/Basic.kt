@@ -10,6 +10,7 @@ fun main(args: Array<String>) {
     print("Hello, ")
     runBlocking {
         delay(2000L)
+        println("Waited for 2000 ms")
     }
 
 //    structuredCoroutine()
