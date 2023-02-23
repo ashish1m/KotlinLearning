@@ -21,7 +21,7 @@ fun threadTest() {
             }
         }
     }
-    println("Created ${numOfThreads} threads in ${time}ms.")
+    println("Created $numOfThreads threads in ${time}ms.")
 }
 
 fun coroutineTest() = runBlocking {
@@ -35,5 +35,5 @@ fun coroutineTest() = runBlocking {
             }
         }
     }
-    println("Created ${numOfCoroutines} coroutines in ${time}ms.")
+    println("Created $numOfCoroutines coroutines in ${time}ms.")
 }
